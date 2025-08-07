@@ -20,10 +20,10 @@ public static partial class ImUtf8
         var ret = false;
         if (ColorEdit(label, ref input,
                 ImGuiColorEditFlags.NoInputs
-              | ImGuiColorEditFlags.DisplayRGB
-              | ImGuiColorEditFlags.InputRGB
+              | ImGuiColorEditFlags.DisplayRgb
+              | ImGuiColorEditFlags.InputRgb
               | ImGuiColorEditFlags.NoTooltip
-              | ImGuiColorEditFlags.HDR))
+              | ImGuiColorEditFlags.Hdr))
         {
             setter(input);
             ret = true;

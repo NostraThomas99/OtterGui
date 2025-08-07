@@ -46,12 +46,12 @@ public static unsafe partial class ImUtf8
         var userData = 0;
 
         var input = hint.Length > 0
-            ? ImGuiNative.igInputTextWithHint(label.Start(), hint.Start(), buffer.Start(), (uint)buffer.Length,
+            ? ImGui.InputTextWithHint(label.Start(), hint.Start(), buffer.Start(), (uint)buffer.Length,
                 flags | ImGuiInputTextFlags.CallbackAlways,
-                a => *(int*)a->UserData = a->BufTextLen, &userData).Bool()
-            : ImGuiNative.igInputText(label.Start(), buffer.Start(), (uint)buffer.Length, flags | ImGuiInputTextFlags.CallbackAlways,
+                a => *(int*)a->UserData = a->BufTextLen, &userData)
+            : ImGui.InputText(label.Start(), buffer.Start(), (uint)buffer.Length, flags | ImGuiInputTextFlags.CallbackAlways,
                 WriteTextLengthCallback,
-                &userData).Bool();
+                &userData);
         textLength = userData;
         return input;
     }
@@ -287,6 +287,6 @@ public static unsafe partial class ImUtf8
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static bool InputText(ReadOnlySpan<byte> label, Span<byte> buffer, ReadOnlySpan<byte> hint, ImGuiInputTextFlags flags)
         => hint.Length > 0
-            ? ImGuiNative.igInputTextWithHint(label.Start(), hint.Start(), buffer.Start(), (uint)buffer.Length, flags, null!, null).Bool()
-            : ImGuiNative.igInputText(label.Start(), buffer.Start(), (uint)buffer.Length, flags, null!, null).Bool();
+            ? ImGui.InputTextWithHint(label.Start(), hint.Start(), buffer.Start(), (uint)buffer.Length, flags, null!, null)
+            : ImGui.InputText(label.Start(), buffer.Start(), (uint)buffer.Length, flags, null!, null);
 }

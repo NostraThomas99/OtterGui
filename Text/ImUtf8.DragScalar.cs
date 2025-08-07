@@ -24,8 +24,8 @@ public static unsafe partial class ImUtf8
     {
         var actualMin = min.GetValueOrDefault();
         var actualMax = max.GetValueOrDefault();
-        return ImGuiNative.igDragScalar(label.Start(), Type<T>(), Unsafe.AsPointer(ref value), speed, min.HasValue ? &actualMin : null,
-            max.HasValue ? &actualMax : null, format.Start(), flags).Bool();
+        return ImGui.DragScalar(label.Start(), Type<T>(), Unsafe.AsPointer(ref value), speed, min.HasValue ? &actualMin : null,
+            max.HasValue ? &actualMax : null, format.Start(), flags);
     }
 
     /// <param name="label"> The slider label as a UTF16 string. </param>

@@ -41,11 +41,11 @@ public static partial class ImRaii
             return this;
         }
 
-        public Id Push(nint id, bool condition = true)
+        public unsafe Id Push(nint id, bool condition = true)
         {
             if (condition)
             {
-                ImGui.PushID(id);
+                ImGui.PushID((byte*)id);
                 ++_count;
             }
 

@@ -24,10 +24,10 @@ public static unsafe partial class ImUtf8
         ReadOnlySpan<byte> hint = default, ImGuiInputTextFlags flags = ImGuiInputTextFlags.None)
     {
         flags &= ~ImGuiInputTextFlags.EnterReturnsTrue;
-        var id = ImGuiNative.igGetID_StrStr(label.Start(out var end), end);
+        var id = ImGui.GetID(label.Start(out var end), end);
         if (InputStringHandlerBuffer.IsActive && id == InputStringHandlerBuffer.LastId)
         {
-            ImGuiNative.igInputText(label.Start(), InputStringHandlerBuffer.Buffer, (uint)InputStringHandlerBuffer.Size, flags, null!, null);
+            ImGui.InputText(label.Start(), InputStringHandlerBuffer.Buffer, (uint)InputStringHandlerBuffer.Size, flags, null!, null);
             return InputStringHandlerBuffer.Return(input, out result);
         }
 
@@ -119,10 +119,10 @@ public static unsafe partial class ImUtf8
         ReadOnlySpan<byte> hint = default, ImGuiInputTextFlags flags = ImGuiInputTextFlags.None)
     {
         flags &= ~ImGuiInputTextFlags.EnterReturnsTrue;
-        var id = ImGuiNative.igGetID_StrStr(label.Start(out var end), end);
+        var id = ImGui.GetID(label.Start(out var end), end);
         if (InputStringHandlerBuffer.IsActive && id == InputStringHandlerBuffer.LastId)
         {
-            ImGuiNative.igInputText(label.Start(), InputStringHandlerBuffer.Buffer, (uint)InputStringHandlerBuffer.Size, flags, null!, null);
+            ImGui.InputText(label.Start(), InputStringHandlerBuffer.Buffer, (uint)InputStringHandlerBuffer.Size, flags, null!, null);
             return InputStringHandlerBuffer.Return(input, out result);
         }
 

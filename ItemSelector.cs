@@ -88,7 +88,7 @@ public class ItemSelector<T>
         SetCurrent(0);
     }
 
-    public void CreateDropSource<TData>(TData data, string tooltip)
+    public unsafe void CreateDropSource<TData>(TData data, string tooltip)
     {
         using var source = ImRaii.DragDropSource();
         if (!source)
@@ -207,7 +207,7 @@ public class ItemSelector<T>
     protected virtual void OnDrop(object? data, int idx)
         => throw new NotImplementedException();
 
-    private void InternalDraw(int idx)
+    private unsafe void InternalDraw(int idx)
     {
         // Add a slight distance from the border so that the padding of a selectable fills the whole border.
         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + ImGui.GetStyle().FramePadding.X);
